@@ -1,33 +1,33 @@
 const Traveler = require("./Traveler");
 
-class Hunter extends Traveler {
-    constructor(name, food, isHealthy) {
-        super(name, food, isHealthy);
-        /**@override */
-        this.food = 2;
+class Hunter extends Traveler{
+    constructor(name,isHealthy ,food){
+        super(name,isHealthy ,food);
     }
-
-    /**@override */
-    hunt() {
+    
+    hunt(){
         this.food += 5;
+        return this.food
     }
 
-    /**@override */
-    eat() {
-        if(this.food >= 2) {
+    eat(){
+        if(this.food > 1){
             this.food -= 2;
-        } else {
-            this.food -= this.food;
+            return this.food
+
+        }else{
             this.isHealthy = false;
+            return this.isHealthy;
         }
     }
 
-    giveFood(traveler, numOfFoods) {
-        if(this.food >= traveler.food) {
-            this.food -= numOfFoods;
-            traveler.food += numOfFoods;
+    giveFood(traveler, numOfFoodUnits){
+        if(this.food >= numOfFoodUnits){
+            this.food -= numOfFoodUnits
+            traveler.food += numOfFoodUnits
         }
     }
+
 }
 
 module.exports = Hunter;

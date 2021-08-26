@@ -1,43 +1,33 @@
 const { Given, When, Then } = require("@cucumber/cucumber");
 const assert = require("assert");
 
-const { doto } = require("./../../app");
-
-/** GIVEN */
+const { viajante, doutor } = require("./../../app");
 
 Given('um Doctor de nome {string}', function (string) {
-    doto.nome = string;
+    doutor.name = string;
 });
 
-Given('{int} refeição apenas no inicio da viagem', function (int) {
-    doto.food = int;
+Given('ele sempre começa a viagem saudável', function () {
+    doutor.isHealthy = true;
 });
 
-Given('saudável no inicio da viagem afinal de contas ele e medico.', function () {
-    doto.isHealthy = true;
+Given('um viajante chamado {string}', function (string) {
+    // Write code here that turns the phrase above into concrete actions
+    viajante.name = string
+  });
+
+Given('o viajante está doente', function () {
+    viajante.isHealthy = false
 });
 
-/** WHEN */
+Given('o viajante está saudável', function () {
+    viajante.isHealthy = true
+  });
 
-When('caçar {int} vez', function (int) {
-    for(let contador = 0; contador < int; contador++) {
-        doto.hunt();
-    }
-});
+When('o Doctor tentar curar', function () {
+    doutor.heal(viajante)
+  });
 
-When('comer {int} vez', function (int) {
-    for(let contador = 0; contador < int; contador++) {
-        doto.eat();
-    }
-});
-
-/** THEN */
-
-Then('deve ter {int} refeições.', function (int) {
-    assert.strictEqual(doto.food, int);
-});
-
-
-Then('terá {int} refeições.', function (int) {
-    assert.strictEqual(doto.food, int);
+Then('o viajante estará saudável', function () {
+    assert.strictEqual(viajante.isHealthy, true)
 });

@@ -1,20 +1,23 @@
-# language: pt
+#language: pt
 
 Funcionalidade: Doctor
-Como um Doctor
-Eu devo curar os passageiros
-Para que todos continuem saudáveis
+    Como um Doctor
+    Eu devo curar os passageiros
+    Para que eles possam seguir a viagem saudável
 
-Contexto:
-Dado um Doctor de nome "Dr.Rey"
-E 1 refeição apenas no inicio da viagem
-E saudável no inicio da viagem afinal de contas ele e medico.
+    Contexto: 
+        Dado um Doctor de nome "Doutor Van Tramonte"
+        E ele sempre começa a viagem com 1 refeição
+        E ele sempre começa a viagem saudável
+    
+    Cenário: Tentou curar um viajante doente
+        Dado um viajante chamado "Ana"
+        E o viajante está doente
+        Quando o Doctor tentar curar
+        Então o viajante estará saudável
 
-
-Cenário: Caçou para conseguir mais comida
-Quando caçar 1 vez
-Então deve ter 3 refeições.
-
-Cenário: Comeu pois estava com fome
-Quando comer 1 vez
-Então terá 0 refeições.
+    Cenário: Tentou curar um viajante saudável
+        Dado um viajante chamado "João"
+        E o viajante está saudável
+        Quando o Doctor tentar curar
+        Então o viajante estará saudável
