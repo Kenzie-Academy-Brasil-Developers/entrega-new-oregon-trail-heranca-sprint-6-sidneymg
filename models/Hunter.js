@@ -1,4 +1,3 @@
-
 const Traveler = require("./Traveler");
 
 class Hunter extends Traveler {
